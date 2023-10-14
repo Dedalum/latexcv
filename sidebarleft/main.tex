@@ -106,6 +106,11 @@
     \vcenteredhbox{\icon{#1}{#2}{#5}}  \hspace{2pt} \href{mailto:#4}{\textcolor{#5}{#3}}
 }
 
+\newcommand{\iconegithub}[5]{                         
+    \vcenteredhbox{\icon{#1}{#2}{#5}}  \hspace{2pt} \href{#4}{\textcolor{#5}{#3}}
+}
+
+
 %----------------------------------------------------------------------------------------
 %	PAGE LAYOUT  DEFINITIONS
 %----------------------------------------------------------------------------------------
@@ -227,7 +232,7 @@
 \newcommand{\cvsection}[1] {
 	\vspace{14pt}
 	\cvtext{
-		\textbf{\LARGE{\textcolor{darkcol}{\uppercase{#1}}}}\\[-4pt]
+		\textbf{\LARGE{\textcolor{darkcol}{#1}}}\\[-4pt]
 		\textcolor{maincol}{ \rule{0.1\textwidth}{2pt} } \\
 	}
 }
@@ -247,8 +252,8 @@
 	
 	\hspace{4pt}
 	\begin{tikzpicture}[scale=1,rounded corners=2pt,very thin]
-		\fill [lightcol] (0,0) rectangle (1\mpwidth, 0.15);
-		\fill [maincol] (0,0) rectangle (#3\mpwidth, 0.15);
+		\fill [lightcol] (0,0) rectangle (1\mpwidth, 0.1);
+		\fill [maincol] (0,0) rectangle (#3\mpwidth, 0.1);
   	\end{tikzpicture}%
 }
 
@@ -272,34 +277,54 @@
 	
 	% we wrap this part in a parbox, so title and description are not separated on a pagebreak
 	% if you need more control on page breaks, remove the parbox
-	\parbox{\mpwidth}{
-		\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
-	 		\textcolor{black}{\textbf{#2}} & \colorbox{maincol}{\makebox[0.25\mpwidth]{\textcolor{white}{#1}}} \\
-			\textcolor{maincol}{\textbf{#3}} & \\
-		\end{tabular*}\\[8pt]
-	
-		\ifthenelse{\isempty{#4}}{}{
-			\cvtext{#4}\\
-		}
-	}
+    % \parbox{\mpwidth}{
+    %     \begin{tabular*}{1\mpwidth}{@{} p{\dimexpr0.59\mpwidth-\tabcolsep} r @{}}
+    %         \textcolor{black}{\textbf{#2}} & \colorbox{maincol}{\makebox[0.42\mpwidth]{\textcolor{white}{#1}}} \\
+    %         \textcolor{maincol}{\textbf{#3}} & \\
+    %     \end{tabular*}\\[8pt]
+
+    %     \ifthenelse{\isempty{#4}}{}{
+    %         \cvtext{#4}
+    %     }
+    % }
+    \parbox{\mpwidth}{
+      \begin{tabular*}{1\mpwidth}{p{0.59\mpwidth}  r}
+          \textcolor{black}{\large{\textbf{#2}}} & \colorbox{white}{\makebox[0.52\mpwidth]{\textcolor{black}{#1}}} \\
+          \textcolor{maincol}{\textbf{#3}} & \\
+      \end{tabular*}\\[8pt]
+    
+      \ifthenelse{\isempty{#4}}{}{
+          \cvtext{#4}
+      }
+    }    
+	% \parbox{\mpwidth}{
+    %   \begin{tabular*}{1\mpwidth}{p{0.59\mpwidth}  r}
+    %       \textcolor{black}{\textbf{#2}} & \colorbox{white}{\makebox[0.42\mpwidth]{\textcolor{black}{#1}}} \\
+    %       \textcolor{maincol}{\textbf{#3}} & \\
+    %   \end{tabular*}\\[8pt]
+    
+    %   \ifthenelse{\isempty{#4}}{}{
+    %       \cvtext{#4}
+    %   }
+    % } 
 
 	\ifthenelse{\isempty{#5}}{}{
-		\vspace{9pt}
+		\vspace{4pt}
 		{#5}
 	}
 
 	\ifthenelse{\isempty{#6}}{}{
-		\vspace{9pt}
-		\cvtext{\textbf{Technologies include:}}\\
+		\vspace{4pt}
+		\cvtext{\textbf{Technologies:}}
 		{#6}
 	}
 
 	\ifthenelse{\isempty{#7}}{}{
-		\vspace{9pt}
-		\cvtext{\textbf{Achievements include:}}\\
+		\vspace{4pt}
+		\cvtext{\textbf{Achievements:}}
 		{#7}
 	}
-	\vspace{14pt}
+	\vspace{7pt}
 }
 
 %----------------------------------------------------------------------------------------
@@ -339,8 +364,8 @@
 
 
 %============================================================================%
-%
-%
+
+%%
 %
 %	DOCUMENT CONTENT
 %
@@ -349,125 +374,125 @@
 %============================================================================%
 \begin{document}
 \columnratio{0.31}
-\setlength{\columnsep}{2.2em}
-\setlength{\columnseprule}{4pt}
+\setlength{\columnsep}{2.2em
+}\setlength{\columnseprule}{4pt}
 \colseprulecolor{lightcol}
 \begin{paracol}{2}
 \begin{leftcolumn}
 %---------------------------------------------------------------------------------------
-%	META IMAGE
+%	META IMAGE + info
 %----------------------------------------------------------------------------------------
-\includegraphics[width=\linewidth]{untitled.jpg}	%trimming relative to image size
+%\includegraphics[width=\linewidth]{untitled.jpg}	%trimming relative to image size
+
+
+
+\vfill\null
+\cvsection{Contact}
+	
+\icontext{MapMarker}{12}{Puy de Merland\\24110 St Astier, France}{black}\\[6pt]
+\icontext{MobilePhone}{12}{+33 6 75 10 87 20}{black}\\[6pt]
+\iconemail{Envelope}{12}{ha.lagrange9000@gmail.com}{ha.lagrange9000@gmail.com}{black}\\[6pt]
+\iconegithub{Github}{12}{https://github.com/Dedalum}{https://github.com/Dedalum}{black}\\
+
 
 %---------------------------------------------------------------------------------------
 %	META SKILLS
 %----------------------------------------------------------------------------------------
-\cvsection{SKILLS}
+\cvsection{Technical skills}
 
-\cvskill{Python} {5+ yrs} {1} \\[-2pt]
+\cvskill{Python} {4+ yrs} {1} \\[-2pt]
 
-\cvskill{Ansible} {5+ yrs} {1} \\[-2pt]
+\cvskill{Golang} {2+ yrs} {0.7} \\[-3pt]
 
-\cvskill{Linux} {5+ yrs} {1} \\[-2pt]
+\cvskill{SQL} {4+ yrs} {0.7} \\
 
-\cvskill{Open Source Tools} {5+ yrs} {1} \\[-2pt]
+\cvskill{Linux, Bash, git} {5+ yrs} {1} \\[-2pt]
 
-\cvskill{Django} {5+ yrs} {0.8} \\[-2pt]
+\cvskill{Ansible, Jenkins} {3+ yrs} {0.6} \\[-3pt]
 
-\cvskill{Html/CSS} {3+ yrs} {0.72} \\[-2pt]
+\cvskill{AWS/GCP, Kubernetes} {2+ yrs} {0.5} \\[-3pt]
 
-\cvskill{Javascript} {3+ yrs} {0.69} \\[-2pt]
+\cvskill{Elasticsearch, InfluxDB \& Grafana} {2+ yrs} {0.5} \\[-3pt]
 
-\cvskill{GIT} {3+ yrs} {1} \\[-2pt]
-
-
+\cvskill{Html/CSS, Javascript} {3+ yrs} {0.3} \\[-4pt]
 
 \vfill\null
-\cvsection{CONTACT}
-	
-\icontext{MapMarker}{12}{Example St. 1\\12345 Somewhere}{black}\\[6pt]
-\icontext{MobilePhone}{12}{+49 178 910 11 12 13}{black}\\[6pt]
-\iconemail{Envelope}{12}{contact@example.com}{contact@example.com}{black}\\[6pt]
+\cvsection{Other skills}
+
+\cvskill{Agile methods: Scrum \& Kanban} {5+ yrs} {1} \\[-2pt]
+
+\cvskill{Product development \& management} {3+ yrs} {0.65} \\[-2pt]
+
+\cvskill{Cross-team communication} {5+ yrs} {1} \\
+
+\cvskill{SEO \& Web marketing} {<1 yr} {0.2} \\[-3pt]
 
 \vfill\null
-\cvqrcode{0.7}
+\cvsection{Languages}
+{\cvlist{
+    \item French: native speaker
+    \item English: full proficiency
+    \item German, Swedish, Spanish: basic level
+}}
+
 
 %---------------------------------------------------------------------------------------
 %	EDUCATION
 %----------------------------------------------------------------------------------------
-\newpage
-\cvsection{EDUCATION}
+\cvsection{Education}
 
 \cvmetaevent
-{2009 - 2011}
-{M. Sc. Physics.}
-{Universität Bonn}
-{Main thematic priority of those master studies was numerical time series analysis of non-linear dynamical systems. Besides data analysis and transformation, great importance was attached to fast algorithms and efficient software architecture.
-
-In the master thesis a numerical approach for the detection of the direction of interaction was proposed. Analysis of this new approach was performed with the help computer simulations to find out its limits and to compare it to another commonly used approaches.
-
-This numerical approach was highly optimised for cluster computing and implemented in c++ . For those purposes a distributed computing cluster had to be set up and administrated.}
+{2011 - 2016}
+{Master degree, IT \& CS}
+{Université de Technologie de Troyes - Troyes, France}
+{IT \& CS, specializing in Information Security: mathematics, networking,
+Computer Science, relational DB, image processing, cryptography,
+information security (policies and management of information)}
 
 \cvmetaevent
-{2006 - 2009}
-{B. Sc. Physics.}
-{Universität Bonn}
-{The topic for the bachelor's thesis was 'Feshbach resonance'. A numerical application was built to calculate the diagrams.}
+{Fall 2014}
+{Exchange }
+{University of Waterloo - Waterloo, Canada}
+{Faculty of mathematics, computer science program: computer \& information security, CS, graph theory}
 
-\vfill\null
-\cvqrcode{0.7}
+% -------
+% Extra
+% -------
+
+\cvsection{Interests}
+{\cvlist{
+    \item Financial investments
+    \item Statistics, data analysis
+    \item Crypto/blockchain technologies and markets
+    \item Business \& marketing
+    \item History \& international relations, beer brewing, hiking
+}}
 
 %---------------------------------------------------------------------------------------
 %	CERTIFICATION
 %----------------------------------------------------------------------------------------
-\newpage
-\cvsection{CERTIFICATIONS}
+% \newpage
+% \cvsection{CERTIFICATIONS}
 
-\cvmetaevent
-{LPIC 1 - Linux administrator}
-{}
-{}
-{Certificate issued by the Linux Professional Institute to prove abilities in Linux administration}
+% \cvmetaevent
+% {LPIC 1 - Linux administrator}
+% {}
+% {}
+% {Certificate issued by the Linux Professional Institute to prove abilities in Linux administration}
 
-\cvmetaevent
-{IBM InfoSphere Advanced DataStage Essentials}
-{}
-{}
-{Intense course about the ETL technologies and the use of IBM DataStage.}
-
-\cvmetaevent
-{Jump Start Program}
-{}
-{}
-{Two months full-time training in object oriented programming in Java SE/EE, software development, testing and modern enterprise web-frameworks. Other topics were object oriented design patterns, test-driven development, SQL-databases and webservers in Java environment (Tomcat / Glasfish / JBoss / Jety)}
-
-
-\cvmetaevent
-{Online Classes}
-{}
-{}
-{It is important for me to stay up to date with the newest topics in the field of IT. In DevOps it is also important to have a general overview and a hands-on experience on them. Therefore, besides intense article studies, I also keep myself up to date with online classes.}
-
-\vfill
-\cvqrcode{0.7}
-
-\newpage
-\mbox{} % hotfix to place qrcode on the bottom when there are not other elements
-\vfill
-\cvqrcode{0.7}
 
 \end{leftcolumn}
 \begin{rightcolumn}
 %---------------------------------------------------------------------------------------
 %	TITLE  HEADER
 %----------------------------------------------------------------------------------------
-\fcolorbox{white}{darkcol}{\begin{minipage}[c][3.5cm][c]{1\mpwidth}
+\fcolorbox{white}{white}{\begin{minipage}[c][3.5cm][c]{1\mpwidth}
 	\begin {center}
-		\HUGE{ \textbf{ \textcolor{white}{ \uppercase{ ILYA RUMYANTSEV } } } } \\[-24pt]
-		\textcolor{white}{ \rule{0.1\textwidth}{1.25pt} } \\[4pt]
-		\large{ \textcolor{white} {Freelance Automation  Consultant and Developer} }
+		\HUGE{ \textbf{ \textcolor{black}{ Hugues Lagrange } } } \\[-20pt]
+		\textcolor{black}{ \rule{0.1\textwidth}{1.25pt} } \\[4pt]
+		\large{ \textcolor{black} {Python developer/devops} }
 	\end {center}
-\end{minipage}} \\[14pt]
+\end{minipage}} \\[1pt]
 \vspace{-12pt}
 
 %---------------------------------------------------------------------------------------
@@ -476,169 +501,113 @@ This numerical approach was highly optimised for cluster computing and implement
 \vfill\null
 \cvsection{PROFILE}
 
-\cvtext{IT Consultant with strong theoretical skills and a passion for OpenSource sofware.\\
-
-DevOps Engineer, specialized both in automation and in custom application development, experienced with large projects and heterogeneous infrastructures. The link between development and operations, comfortable in both.\\
-
-Customer-oriented and structured method of working, focused on quality and maintainability. Highly motivated to work in a team, both comfortable in big companies as in small teams.\\
-
+\cvtext{Looking for challenges, exciting products and good team spirit. Flexible and adaptive tech person diving into business and marketing with specific experience in Python and Golang in the fintech industry. Devops and automation mindset, problem solver and open-minded.
 }
 
 %---------------------------------------------------------------------------------------
 %	WORK EXPERIENCE
 %----------------------------------------------------------------------------------------
 \vfill\null
-\cvsection{WORK EXPERIENCE}
+\cvsection{WORK EXPERIENCE \& PROJECTS}
 
 \cvevent
-	{Sep 15 - NOW}
-	{DevOps/FullStack developer}
-	{Research and Development}
-	{A large IAM project required an intuitive interface for role-based access and rights management. At the same time, new workfows for role based access, life time and monitoring had to be established}
-	{\cvlist{
-		\item Creation of a web portal for role- and rights management
-		\item Establishing a connection to the existing MicroFocus role solution
-		\item Development of new role-based workfows and processes, as well as training and support
-		\item Maintenance of existing infrastructure
-	}}
-	{\cvlist {
-		\item Django for the roles- and rights management tool backend (backend is a REST interface)
-		\item Angular for the easy frontend interaction
-		\item HTML5/CSS3/Bootstrap3 for the frontend
-		\item Ansible + Docker for 1-click deployments
-	}}
-	{\cvlist{
-		\item A web based tool for an intuitive role assignment and administration
-		\item Online overview of company structures, projects, etc
-		\item Tools for role review, reporting and troubleshooting
-	}}
+    {Feb 23 - May 23, 4 mo}
+    {Professional project: software \& product development}
+    {PDF Toolkit API - Remote, France}
+    {Building a SaaS company from scratch providing an API to generate various types of PDF documents including receipts, reports, resumes in a team of 2.}
+    {\cvlist{    
+        \item Building a production-ready API using Python and FastAPI following TDD, a developer's documentation with VitePress and OpenAPI and a blog with VitePress
+        \item Deployment and maintenance of the production environment
+        \item Design and maintenance of an SQL database
+        \item Setting up an SEO \& web marketing strategy, business development, analytics with the help of AI (ChatGPT)
+    }}
+    {\cvlist{
+        \item Development of a Python website \& API with FastAPI, OAuth for authentication and authorization, VueJS \& VitePress
+        \item PostgreSQL 
+        \item Devops: Github Actions (CI/CD), Ansible
+        \item InfluxDB \& Grafana, Elasticsearch
+    }}
+    {}
 
-\vfill\null
 \cvevent
-	{Jan 15 - Sep 15}
-	{DevOps engineer}
-	{Research and Development}
-	{Responsible for infrastructure architecture with regard on the future development and tool selection in the field of identity and access management}
-	{\cvlist{
-		\item Selection of future-proof tools for a large infrastructure
-		\item Infrastructure migration into a cloudstack cloud
-		\item Quality assurance in terms of documentation
-		\item Tool development for infrastructure overview
-		\item Development of Ansible modules for client
-	}}
-	{\cvlist {
-		\item Python for custom tool development
-		\item Ansible for infrastructure migration and cloud configuration
-		\item SLES12
-		\item Django for Visualization
-	}}
-	{\cvlist{
-		\item Ansible module for SLES12 System + Package registration
-		\item Python tool for ACL-administration in cloud
-		\item Fully automated migration of old systems into cloud with Ansible playbooks/roles
-		\item Django tool on LDAP - Schema Review
-	}}
+	{Apr 20 - Aug 23, 3 yr 5 mo}
+	{Software developer - Python}
+	{Linxo Group - Remote/Aix-en-Provence, France}
+	{Linxo is a French fintech startup aggregating banking data for individuals and offering services of accounting and business finance for businesses.\\
+    I was part of the team responsible for aggregating the banking data and handling its pipelines and its pre-analysis in a GDPR compliant \& ISO 27001 certificated environment.}
+    {\cvlist{
+        \item Design and implementation of various features and business logic for banking and financial data gathering, filtering and analysis through scraping and data pipelines with scrum method and test-driven development
+        \item Within an 8 people company-wide cross-team, design \& implementation of the "wealth" service gathering and analyzing financial investments \& portfolios data for businesses and customers
+        \item Building a PoC "crypto" service gathering crypto-currencies investments \& portfolios and providing analysis for our customers
+        \item Meetings \& monthly exchanges with French and foreign banks for issues solving and feature developments
+        \item Handling level 3 customer support, including business customers and simple users
+        \item Preparing weekly workshops for sharing knowledge and keeping the tech and business logic documentation up to date
+    }}
+    {\cvlist{
+      \item Python, PostgreSQL, occasional Java/Go
+      \item Jenkins CI, ELK stack for logging, Grafana metrics (Postgre, Influxdb), Bash
+      \item Project management \& L3 support, Data pipelines and analysis
+    }}
+    {}
 
-\vfill\null
+% \vfill\null
 \cvevent
-	{Mar 14 - Jan 15}
-	{Systems Analyst}
-	{Research and Development}
-	{Responsible for infrastructure architecture / automaton as well as custom tool development on a project for directory services and identity / access management in a large heterogeneous environment.}
-	{\cvlist{
-		\item Design and implementation of update and deployment process automaton
-		\item Quality assurance by design of infrastructure monitoring, centralized logging solutions and documentation
-		\item Customized tool creation for ldap operations
-		\item Installation and maintenance of single sign on solutions
-		\item Customer support in ldap / infrastructural / programming concerns
+	{May 17 - Aug 18, 1 yr 4 mo}
+    {Software developer - Golang \& Python}
+    {Snuk - Berlin, Germany}
+    {IoT infrastructure platform for smart buildings. The projects involved multiple technical domains: from IoT hardware to Cloud technologies, using Open source software when it made sense and developing mostly in Golang and Python. \\
+    Within a small team, I've participated both in general product development and hands-on implementation.}
+    {\cvlist{
+        \item Design of distributed systems, implementation and installation of on-premise IoT infrastructures and cloud architectures still running today in a set of Berlin factories
+        \item Direct product development with the customers and remote \& on-site support with the factories management and workers
+        \item Demos and presentations of our product in tech meetings
+    }}
+    {\cvlist{
+        \item Golang \& Python development, Bash
+        \item GCP, Docker, Hashicorp stack, Ansible, Linux
+        \item TIGK stack (Grafana, Telegraf, Influxdb, Kapacitor)
+        \item IoT, BLE, MQTT, Mosquitto, Raspberry Pi
 	}}
-	{\cvlist {
-		\item Ansible for infrastructure automaton and configuration management
-		\item Python for custom Tool development
-		\item nxLog + rsyslog + graylog for logging infrastructure
-		\item NOVELL eDirectory
-		\item Shibboleth as identity Provider combined with ldap
-		\item SLES11
-		\item Git for configuration and documentation versioning
-	}}
-	{\cvlist{
-		\item Drastically accelerated (~20x faster) the update process and improved its reliability by introduction of centralized configuration management
-		\item Extended the python-ldap library with interfaces for simplified access and modification of LDAP-Objects and searches
-		\item  Introduction of a complete and reliable centralized logging solution including log filtering and alerting for both windows and Linux systems
-	}}
+    {}
 
-\vfill\null
+% \vfill\null
 \cvevent
-	{Sep 13 - Mar 14}
-	{Systems Analyst}
-	{Tourism industry}
-	{Responsible for data transformation and tool customization on a migration (legacy c++ code from Solaris to Linux systems) project. The tasks include}
+    {Mar 16 - Sep 16, 6 mo}
+    {IT security/admin intern}
+    {Freespee AB - Uppsala, Sweden}
+    {Freespee is a real time conversation cloud for marketers.}
+    % I worked as an intern in the engineering team, in Uppsala, Sweden, performing system administration tasks with a focus on information security. Along my different projects were}
+    % {\cvlist{
+    %     \item Deploying an ELK stack for central log management with a Redis buffer in an AWS VPC (25 VMs)
+    %     \item Preparing an office firewall based on Debian (iptables scripts, Suricata IDS, OpenVPN bridge, VLANs, DHCP and local DNS)
+    %     \item Installing an OpenVPN server for a secure remote access to the AWS VPC
+    %     \item Research and setup of a ”chatops” solution using Slack and Errbot, Jenkins, Ansible and Docker 
+    % }}
 	{\cvlist{
-		\item Tool development for identification of critical spots in code
-		\item Legacy code analysis
-		\item Quality assurance
-		\item Department-wide training in python
-		\item Consulting in topics of migration to Git
+		\item AWS, ELK stack \& Redis, Ansible, OpenVPN server, Linux
+		\item Bash \& Python scripting
+        \item SQL
 	}}
-	{\cvlist {
-		\item Python
-		\item Git
-		\item Linux (Debian)
-	}}
-	{\cvlist{
-		\item Implementing code coverage and dynamic code checker for c++ legacy source code based on gcov
-		\item Introduction of Python + Environment in project
-	}}
+    {}
+	{}
 
-\vfill\null
+% \vfill\null
 \cvevent
-	{Oct 12 - Sep 13}
-	{Systems Analyst}
-	{Tourism industry}
-	{Responsible for the infrastructure including performance and quality assurance on a large social media project.}
-	{\cvlist{
-		\item Organization and care of a cloud network (Debian systems)
-		\item Support for software developers
-		\item Configuration of open source tools for code quality and documentation
-		\item Implementation of performance checks
-		\item Implementation of automated reports on code quality and performance
-	}}
-	{\cvlist {
-		\item Python + Django for tool development
-		\item Sonar as static and dynamic tool for code analysis
-		\item OpenLDAP for user rights management
-		\item JIRA as the issue tracking/SCRUM tool
-	}}
-	{\cvlist{
-		\item Customized wiki and documentation application for developers with Jenkins and Git integration
-		\item Django web application to test the product performance using selenium tests in background with customizable tests / test
-environments ad a graphical evaluation using the jqPlot library (also Jaiascript / jQuery)
-		\item Improvement of the overall code quality by raising test coverage (+ \~30\%) and identification + elimination of potential code flaws
-	}}
-
-\vfill\null
-\cvevent
-	{Oct 11 - Oct 12}
-	{IT Consultant}
-	{Accenture Tech. Solutions}
-	{Large public service project with the goal to establish a platform for handling of finance processes with a very high number of transactions. Main focus was the migration of legacy data, by assuring data quality and transformation into various formats}
-	{\cvlist{
-		\item Customer consulting with regard to loading / unloading interfaces
-		\item Definition of requirements for transformation of legacy data
-		\item Implementation of algorithms for data transformation
-		\item Tool development for secure data transport
-		\item Tool development for tests of data quality/interface implementation
-	}}
-	{\cvlist {
-		\item Standard Linux tools, such as awk, sed, grep, ...
-		\item Python for in-depth data analysis
-		\item Java for transport layers
-		\item IBM DataStage
-	}}
-	{\cvlist{
-		\item Definition of uniform standards
-		\item Introduction of the standard Linux stack as global toolset for data analysis in project
-	}}
+    {Feb 15 - Jul 15, 6 mo}
+    {System administrator}
+    {Jymeo - Nantes, France}
+    {JYMEO is an internet/marketing start-up.}
+     % We followed the Scrum method. I deployed and worked on the ELK suite for analyzing server logs, deployed OpenVPN servers and backup scripts, firewalls (iptables, fail2ban, NAXSI), secured Wordpress websites.}
+    % {\cvlist{
+    %     \item Setting up new servers (Virtual machines running Debian 8, with providers OVH/RunAbove) with web-servers (Nginx, Apache)
+    %     \item Level 3 support
+    % }}
+    {\cvlist{
+        \item OVH cloud, ELK stack, Ansible, OpenVPN server, Linux
+        \item Bash \& Python scripting
+    }}
+    {}
+    {}
 
 % hotfixes to create fake-space to ensure the whole height is used
 \mbox{}
